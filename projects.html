@@ -67,13 +67,8 @@
                   <img src="images/ginas-about.png" alt="Gina's Tennis World about page" class="browser-screenshot" data-slide="3" />
                   <img src="images/ginas-footer.png" alt="Gina's Tennis World footer" class="browser-screenshot" data-slide="4" />
                 </div>
-                <div class="browser-slide-dots">
-                  <span class="browser-dot active" data-slide="0"></span>
-                  <span class="browser-dot" data-slide="1"></span>
-                  <span class="browser-dot" data-slide="2"></span>
-                  <span class="browser-dot" data-slide="3"></span>
-                  <span class="browser-dot" data-slide="4"></span>
-                </div>
+                <button class="slide-arrow slide-prev" data-slideshow="ginas" aria-label="Previous">‹</button>
+                <button class="slide-arrow slide-next" data-slideshow="ginas" aria-label="Next">›</button>
               </div>
             </div>
             <div class="project-info reveal delay-1">
@@ -107,21 +102,18 @@
         <div class="tab-content" id="tab-ridery">
           <div class="project-detail">
             <div class="project-showcase reveal">
-              <div class="phone-mockup">
-                <div class="phone-screen">
-                  <img src="images/ridery-login.png" alt="Ridery login screen" class="phone-screenshot active" data-slide="0" />
-                  <img src="images/ridery-home.png" alt="Ridery home screen" class="phone-screenshot" data-slide="1" />
-                  <img src="images/ridery-ride.png" alt="Ridery ride screen" class="phone-screenshot" data-slide="2" />
-                  <img src="images/ridery-map.png" alt="Ridery map screen" class="phone-screenshot" data-slide="3" />
-                  <img src="images/ridery-driver.png" alt="Ridery driver screen" class="phone-screenshot" data-slide="4" />
+              <div class="phone-mockup-wrapper">
+                <button class="slide-arrow slide-prev" data-slideshow="ridery" aria-label="Previous">‹</button>
+                <div class="phone-mockup">
+                  <div class="phone-screen">
+                    <img src="images/ridery-login.png" alt="Ridery login screen" class="phone-screenshot active" data-slide="0" />
+                    <img src="images/ridery-home.png" alt="Ridery home screen" class="phone-screenshot" data-slide="1" />
+                    <img src="images/ridery-ride.png" alt="Ridery ride screen" class="phone-screenshot" data-slide="2" />
+                    <img src="images/ridery-map.png" alt="Ridery map screen" class="phone-screenshot" data-slide="3" />
+                    <img src="images/ridery-driver.png" alt="Ridery driver screen" class="phone-screenshot" data-slide="4" />
+                  </div>
                 </div>
-                <div class="phone-dots">
-                  <span class="phone-dot active" data-slide="0"></span>
-                  <span class="phone-dot" data-slide="1"></span>
-                  <span class="phone-dot" data-slide="2"></span>
-                  <span class="phone-dot" data-slide="3"></span>
-                  <span class="phone-dot" data-slide="4"></span>
-                </div>
+                <button class="slide-arrow slide-next" data-slideshow="ridery" aria-label="Next">›</button>
               </div>
             </div>
             <div class="project-info reveal delay-1">
@@ -316,7 +308,7 @@
       // Auto-advance every 3 seconds
       slideInterval = setInterval(nextSlide, 3000);
 
-      // Click dots to navigate
+      // Click dots to navigate (Ridery — kept for reference, arrows handle nav now)
       dots.forEach(dot => {
         dot.addEventListener('click', () => {
           clearInterval(slideInterval);
@@ -325,33 +317,45 @@
         });
       });
 
-      // Gina's browser screenshot slideshow
-      const ginaScreenshots = document.querySelectorAll('.browser-screenshot');
-      const ginaDots = document.querySelectorAll('.browser-dot');
-      let ginaSlide = 0;
-      let ginaInterval;
+      // ─── Slideshow with arrow navigation ───
+      function setupSlideshow(slideshowId, slideSelector) {
+        const slides = document.querySelectorAll(slideSelector);
+        let current = 0;
 
-      function showGinaSlide(index) {
-        ginaScreenshots.forEach(s => s.classList.remove('active'));
-        ginaDots.forEach(d => d.classList.remove('active'));
-        ginaScreenshots[index].classList.add('active');
-        ginaDots[index].classList.add('active');
-        ginaSlide = index;
-      }
+        function show(index) {
+          slides.forEach(s => s.classList.remove('active'));
+          slides[index].classList.add('active');
+          current = index;
+        }
 
-      function nextGinaSlide() {
-        showGinaSlide((ginaSlide + 1) % ginaScreenshots.length);
-      }
+        function next() {
+          show((current + 1) % slides.length);
+        }
 
-      ginaInterval = setInterval(nextGinaSlide, 3000);
+        function prev() {
+          show((current - 1 + slides.length) % slides.length);
+        }
 
-      ginaDots.forEach(dot => {
-        dot.addEventListener('click', () => {
-          clearInterval(ginaInterval);
-          showGinaSlide(parseInt(dot.dataset.slide));
-          ginaInterval = setInterval(nextGinaSlide, 3000);
+        // Arrow buttons
+        document.querySelectorAll(`.slide-prev[data-slideshow="${slideshowId}"]`).forEach(btn => {
+          btn.addEventListener('click', prev);
         });
-      });
+        document.querySelectorAll(`.slide-next[data-slideshow="${slideshowId}"]`).forEach(btn => {
+          btn.addEventListener('click', next);
+        });
+
+        // Auto-advance every 4 seconds, pause on click
+        let interval = setInterval(next, 4000);
+        document.querySelectorAll(`.slide-arrow[data-slideshow="${slideshowId}"]`).forEach(btn => {
+          btn.addEventListener('click', () => {
+            clearInterval(interval);
+            interval = setInterval(next, 4000);
+          });
+        });
+      }
+
+      setupSlideshow('ginas', '.browser-screenshot');
+      setupSlideshow('ridery', '.phone-screenshot');
     </script>
   </body>
 </html>
