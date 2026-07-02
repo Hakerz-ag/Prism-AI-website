@@ -653,3 +653,75 @@ input[type="text"], input[type="email"], input[type="tel"], textarea {
   .site-header { padding: 0 16px; }
   .hero, .services, .approach, .portfolio, .about, .cta-section { padding-left: 16px; padding-right: 16px; }
 }
+
+/* ═══════════════════════════════════════
+   ABOUT PAGE
+   ═══════════════════════════════════════ */
+
+.about-hero {
+  padding: 140px 24px 80px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.about-hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.about-hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 16px 0 20px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-story {
+  padding: 80px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-story .about-text p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+.about-projects {
+  padding: 80px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-values {
+  padding: 80px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.values-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.nav-links a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-hero h1 { font-size: 36px; }
+}
+
+@media (max-width: 600px) {
+  .values-grid { grid-template-columns: 1fr; }
+  .about-hero h1 { font-size: 28px; }
+}
