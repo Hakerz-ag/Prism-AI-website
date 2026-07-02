@@ -2,8 +2,11 @@
    PRISM — Three.js Hero + Interactions
    ═══════════════════════════════════════ */
 
-// ─── Three.js Hero Scene ───
+// ─── Three.js Hero Scene (only on homepage) ───
 const canvas = document.getElementById('heroCanvas');
+
+// If no hero canvas (about/projects pages), skip Three.js entirely
+if (canvas) {
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -191,6 +194,8 @@ function animate() {
 window.addEventListener('resize', resize);
 resize();
 animate();
+
+} // end if (canvas)
 
 // ─── Scroll Reveal ───
 const revealEls = document.querySelectorAll('.reveal');
