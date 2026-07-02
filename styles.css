@@ -1125,30 +1125,80 @@ input[type="text"], input[type="email"], input[type="tel"], textarea {
   opacity: 1;
 }
 
-.browser-slide-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 0;
-  background: #2d2d44;
-}
-
-.browser-dot {
-  width: 10px;
-  height: 10px;
+/* ─── Slide Arrows ─── */
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: #4a4a6a;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  color: #0f172a;
+  font-size: 24px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  line-height: 1;
+  padding: 0;
 }
 
-.browser-dot.active {
-  background: #4f46e5;
-  transform: scale(1.2);
+.slide-arrow:hover {
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transform: translateY(-50%) scale(1.08);
 }
 
-.browser-dot:hover {
-  background: #06b6d4;
+.slide-prev {
+  left: 12px;
+}
+
+.slide-next {
+  right: 12px;
+}
+
+/* Gina's browser arrows */
+.browser-slideshow .slide-prev {
+  left: 12px;
+  top: calc(50% + 16px);
+}
+
+.browser-slideshow .slide-next {
+  right: 12px;
+  top: calc(50% + 16px);
+}
+
+/* ─── Phone Mockup Wrapper (for Ridery) ─── */
+.phone-mockup-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.phone-mockup-wrapper .slide-prev {
+  position: relative;
+  top: auto;
+  transform: none;
+  flex-shrink: 0;
+}
+
+.phone-mockup-wrapper .slide-next {
+  position: relative;
+  top: auto;
+  transform: none;
+  flex-shrink: 0;
+}
+
+.phone-mockup-wrapper .slide-arrow:hover {
+  transform: scale(1.08);
 }
 
 /* ─── Phone Mockup (for Ridery) ─── */
@@ -1198,27 +1248,6 @@ input[type="text"], input[type="email"], input[type="tel"], textarea {
   opacity: 1;
 }
 
-.phone-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
-}
-
 .phone-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #4a4a6a;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.phone-dot.active {
-  background: var(--accent);
-  transform: scale(1.2);
-}
-
-.phone-dot:hover {
-  background: var(--accent-2);
+  display: none;
 }
