@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Prism — Modern Tech for Local Business</title>
+    <meta name="description" content="Custom websites, apps, and managed IT for local businesses. Modern design, sensible pricing." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Floating background orbs -->
+    <div class="bg-orbs" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <header class="site-header">
+      <a href="#" class="brand">
+        <span class="brand-icon">◈</span> Prism
+      </a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#portfolio">Projects</a>
+        <a href="#about">About</a>
+      </nav>
+      <button id="contactBtn" class="btn btn-primary">Contact Me</button>
+    </header>
+
+    <main>
+      <!-- ═══════════ HERO ═══════════ -->
+      <section class="hero" id="hero">
+        <div class="hero-content reveal">
+          <span class="tag">Modern Tech for Local Business</span>
+          <h1>We handle the tech.<br/>You run the business.</h1>
+          <p class="lead">Custom websites, powerful apps, and seamless IT support for local businesses — built modern, priced smart.</p>
+          <div class="hero-ctas">
+            <a href="#portfolio" class="btn btn-ghost">View Our Work</a>
+            <button id="contactBtn2" class="btn btn-primary">Get a Free Consultation</button>
+          </div>
+        </div>
+        <div class="hero-3d reveal delay-1">
+          <canvas id="heroCanvas"></canvas>
+        </div>
+      </section>
+
+      <!-- ═══════════ SERVICES ═══════════ -->
+      <section id="services" class="services">
+        <div class="section-header reveal">
+          <span class="tag">What We Do</span>
+          <h2>Modernizing Local Business,<br/>One Pixel at a Time</h2>
+        </div>
+        <div class="cards services-grid">
+          <article class="card glass reveal">
+            <div class="card-icon">🖥️</div>
+            <h3>Website Upgrades</h3>
+            <p>We don't just build websites — we build digital experiences. Fast, modern, and custom-designed sites that turn visitors into loyal customers.</p>
+          </article>
+          <article class="card glass reveal delay-1">
+            <div class="card-icon">📱</div>
+            <h3>Custom App Development</h3>
+            <p>Run your business smoother with custom apps tailored exactly to your workflow, without the massive enterprise price tag.</p>
+          </article>
+          <article class="card glass reveal delay-2">
+            <div class="card-icon">🛡️</div>
+            <h3>Managed IT &amp; Ongoing Support</h3>
+            <p>Stop stressing over updates, hosting, and glitches. For a flat monthly rate, we take care of all your IT needs so you can focus on your core capabilities.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ═══════════ APPROACH ═══════════ -->
+      <section id="approach" class="approach">
+        <div class="section-header reveal">
+          <span class="tag">How We Work</span>
+          <h2>High-End Customization.<br/>Minimal Cost.</h2>
+          <p class="lead">How do we deliver premium tech without the premium price tag? By working smart and partnering locally.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-num">1</div>
+            <div class="timeline-body">
+              <h3>Discover</h3>
+              <p>We dive deep into what makes your business unique and identify the bottlenecks holding you back.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal delay-1">
+            <div class="timeline-num">2</div>
+            <div class="timeline-body">
+              <h3>Build</h3>
+              <p>We develop a custom portal and app tailored exactly to your needs, stripping away expensive "fluff" you don't need.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal delay-2">
+            <div class="timeline-num">3</div>
+            <div class="timeline-body">
+              <h3>Support</h3>
+              <p>We launch your new tech and stay by your side. We handle the monthly IT heavy lifting while you focus on what you do best.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ PORTFOLIO ═══════════ -->
+      <section id="portfolio" class="portfolio">
+        <div class="section-header reveal">
+          <span class="tag">Past Projects</span>
+          <h2>Real Results for Local Legends</h2>
+        </div>
+        <div class="cards portfolio-grid">
+          <article class="card glass reveal">
+            <div class="card-badge">Tennis</div>
+            <h3>Local Tennis Camps</h3>
+            <p>Streamlined their registration process with a custom portal, saving them 15+ hours of admin work a week.</p>
+            <div class="card-stats">
+              <div class="stat"><span class="stat-num">15+</span><span class="stat-label">hrs/week saved</span></div>
+              <div class="stat"><span class="stat-num">100%</span><span class="stat-label">online bookings</span></div>
+            </div>
+          </article>
+          <article class="card glass reveal delay-1">
+            <div class="card-badge">Transport</div>
+            <h3>City Taxi Company</h3>
+            <p>Upgraded their digital footprint and booking system for faster dispatching and a modern user experience.</p>
+            <div class="card-stats">
+              <div class="stat"><span class="stat-num">2x</span><span class="stat-label">faster dispatch</span></div>
+              <div class="stat"><span class="stat-num">40%</span><span class="stat-label">more online rides</span></div>
+            </div>
+          </article>
+          <article class="card glass reveal delay-2">
+            <div class="card-badge">Restaurant</div>
+            <h3>Neighborhood Restaurant</h3>
+            <p>Rebuilt their online ordering system, eliminating third-party fees and boosting direct sales.</p>
+            <div class="card-stats">
+              <div class="stat"><span class="stat-num">0%</span><span class="stat-label">commission fees</span></div>
+              <div class="stat"><span class="stat-num">+35%</span><span class="stat-label">direct orders</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ═══════════ ABOUT ═══════════ -->
+      <section id="about" class="about">
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <span class="tag">About Me</span>
+            <h2>Your Local Tech Partner</h2>
+            <p>I started this self-led agency with one simple mission: to bridge the technology gap for local small businesses. I saw amazing mom-and-pop shops, camps, and fleets struggling with outdated tech because custom solutions were just too expensive.</p>
+            <p>I act as your personal IT department. I bring modern, enterprise-level design and functionality to the local level, ensuring you have the tools to thrive in a digital world — without losing your local charm.</p>
+            <button id="contactBtn3" class="btn btn-primary" style="margin-top:16px">Let's Talk</button>
+          </div>
+          <div class="about-visual reveal delay-1">
+            <div class="about-card glass">
+              <div class="about-stat-row">
+                <span class="about-stat-num">10+</span>
+                <span class="about-stat-label">Local Businesses Served</span>
+              </div>
+              <div class="about-stat-row">
+                <span class="about-stat-num">24/7</span>
+                <span class="about-stat-label">IT Support Available</span>
+              </div>
+              <div class="about-stat-row">
+                <span class="about-stat-num">100%</span>
+                <span class="about-stat-label">Custom Solutions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ CTA ═══════════ -->
+      <section class="cta-section reveal">
+        <div class="cta-box glass">
+          <h2>Ready to Upgrade Your Business?</h2>
+          <p>Stop worrying about your website and start growing. Reach out today for a free chat about your tech needs.</p>
+          <button id="contactBtn4" class="btn btn-primary btn-lg">Get a Free Consultation</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="brand-icon">◈</span> Prism
+        </div>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#approach">Approach</a>
+          <a href="#portfolio">Projects</a>
+          <a href="#about">About</a>
+        </div>
+        <p class="footer-copy">© <span id="year"></span> Prism — Local Business Tech. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- ═══════════ CONTACT MODAL ═══════════ -->
+    <div id="contactModal" class="modal" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-panel glass">
+        <button class="modal-close" id="modalClose">✕</button>
+        <div class="modal-header">
+          <h3>Let's Upgrade Your Business</h3>
+          <p class="modal-subtitle">Fill out the form below and I'll get back to you within 48 hours.</p>
+        </div>
+        <form id="contactForm">
+          <div class="form-row">
+            <label>Name<input name="name" required placeholder="Your name" /></label>
+            <label>Business Name<input name="business" placeholder="Your business" /></label>
+          </div>
+          <label>Email<input id="email" type="email" name="email" required placeholder="you@business.com" /></label>
+          <label>Phone<input id="phone" type="tel" name="phone" required placeholder="+15551234567" pattern="^\\+?\d{7,15}$" title="Enter a phone number with 7–15 digits, optional leading +" /></label>
+          <label>How can I help you?<textarea id="message" name="message" rows="4" placeholder="Tell me about your project..." required></textarea></label>
+          <div id="formMsg" class="muted" aria-live="polite" style="margin-top:8px"></div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary send-btn">
+              <span class="send-text">Send Message</span>
+              <span class="send-icon">✈</span>
+            </button>
+          </div>
+        </form>
+        <p class="muted">No spam, ever. I'll reply within 48 hours.</p>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/three@0.154.0/build/three.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
