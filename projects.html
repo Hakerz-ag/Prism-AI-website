@@ -53,44 +53,26 @@
         <div class="tab-content active" id="tab-ginas">
           <div class="project-detail">
             <div class="project-showcase reveal">
-              <div class="browser-mockup">
+              <div class="browser-mockup browser-slideshow">
                 <div class="browser-bar">
                   <div class="browser-dots">
                     <span></span><span></span><span></span>
                   </div>
                   <div class="browser-url">ginas-tennis-world.com</div>
                 </div>
-                <div class="browser-body">
-                  <div class="mockup-screen ginas-mockup">
-                    <div class="mockup-nav">
-                      <span class="mockup-logo">🎾 Gina's Tennis World</span>
-                      <div class="mockup-nav-links">
-                        <span>Home</span>
-                        <span>Classes</span>
-                        <span>Book</span>
-                        <span>About</span>
-                      </div>
-                    </div>
-                    <div class="mockup-hero">
-                      <h2>Spring 2026 Clinics Now Open</h2>
-                      <p>Register today and get on the court!</p>
-                      <div class="mockup-btn">Sign Up Now</div>
-                    </div>
-                    <div class="mockup-cards">
-                      <div class="mockup-card">
-                        <div class="mockup-card-icon">📅</div>
-                        <div>Book a Court</div>
-                      </div>
-                      <div class="mockup-card">
-                        <div class="mockup-card-icon">🏆</div>
-                        <div>ACE Attack Training</div>
-                      </div>
-                      <div class="mockup-card">
-                        <div class="mockup-card-icon">💳</div>
-                        <div>Pay Online</div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="browser-body browser-screenshots">
+                  <img src="images/ginas-home.png" alt="Gina's Tennis World homepage" class="browser-screenshot active" data-slide="0" />
+                  <img src="images/ginas-classes.png" alt="Gina's Tennis World classes page" class="browser-screenshot" data-slide="1" />
+                  <img src="images/ginas-book.png" alt="Gina's Tennis World booking page" class="browser-screenshot" data-slide="2" />
+                  <img src="images/ginas-about.png" alt="Gina's Tennis World about page" class="browser-screenshot" data-slide="3" />
+                  <img src="images/ginas-footer.png" alt="Gina's Tennis World footer" class="browser-screenshot" data-slide="4" />
+                </div>
+                <div class="browser-slide-dots">
+                  <span class="browser-dot active" data-slide="0"></span>
+                  <span class="browser-dot" data-slide="1"></span>
+                  <span class="browser-dot" data-slide="2"></span>
+                  <span class="browser-dot" data-slide="3"></span>
+                  <span class="browser-dot" data-slide="4"></span>
                 </div>
               </div>
             </div>
@@ -340,6 +322,34 @@
           clearInterval(slideInterval);
           showSlide(parseInt(dot.dataset.slide));
           slideInterval = setInterval(nextSlide, 3000);
+        });
+      });
+
+      // Gina's browser screenshot slideshow
+      const ginaScreenshots = document.querySelectorAll('.browser-screenshot');
+      const ginaDots = document.querySelectorAll('.browser-dot');
+      let ginaSlide = 0;
+      let ginaInterval;
+
+      function showGinaSlide(index) {
+        ginaScreenshots.forEach(s => s.classList.remove('active'));
+        ginaDots.forEach(d => d.classList.remove('active'));
+        ginaScreenshots[index].classList.add('active');
+        ginaDots[index].classList.add('active');
+        ginaSlide = index;
+      }
+
+      function nextGinaSlide() {
+        showGinaSlide((ginaSlide + 1) % ginaScreenshots.length);
+      }
+
+      ginaInterval = setInterval(nextGinaSlide, 3000);
+
+      ginaDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          clearInterval(ginaInterval);
+          showGinaSlide(parseInt(dot.dataset.slide));
+          ginaInterval = setInterval(nextGinaSlide, 3000);
         });
       });
     </script>
