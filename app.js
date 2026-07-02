@@ -240,30 +240,24 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
 });
 
-// Form submit with animation
-form.addEventListener('submit', async (e) => {
+// Form submit — opens email client
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const btn = form.querySelector('.send-btn');
   const emailEl = document.getElementById('email');
   const phoneEl = document.getElementById('phone');
   const msgEl = document.getElementById('formMsg');
 
-  // Client-side validation: email and phone
   const email = (emailEl.value || '').trim();
   const phone = (phoneEl.value || '').trim();
   const message = (document.getElementById('message').value || '').trim();
+  const name = (form.name.value || '').trim();
+  const business = (form.business.value || '').trim();
 
-  const phoneRe = /^\+?\d{7,15}$/;
   const emailRe = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
   if (!emailRe.test(email)) {
     msgEl.textContent = 'Please enter a valid email address.';
     emailEl.focus();
-    return;
-  }
-  if (!phoneRe.test(phone)) {
-    msgEl.textContent = 'Please enter a valid phone number (7–15 digits, optional +).';
-    phoneEl.focus();
     return;
   }
   if (!message || message.length < 3) {
@@ -272,47 +266,11 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  // Start UI send animation
-  msgEl.textContent = '';
-  btn.classList.add('sending');
-  btn.disabled = true;
-
-  try {
-    const resp = await fetch('/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: form.name.value,
-        business: form.business.value,
-        email,
-        phone,
-        message
-      })
-    });
-
-    const data = await resp.json().catch(() => ({}));
-    if (resp.ok) {
-      btn.classList.remove('sending');
-      btn.classList.add('sent');
-      btn.querySelector('.send-text').textContent = 'Sent ✓';
-      form.reset();
-      msgEl.textContent = 'Thanks — message sent. I will reply soon.';
-      setTimeout(() => {
-        closeModal();
-        btn.classList.remove('sent');
-        btn.querySelector('.send-text').textContent = 'Send Message';
-        btn.disabled = false;
-        msgEl.textContent = '';
-      }, 1000);
-    } else {
-      throw new Error(data.error || 'Failed to send message');
-    }
-  } catch (err) {
-    btn.classList.remove('sending');
-    btn.disabled = false;
-    msgEl.textContent = 'Sorry — could not send message. Try again later.';
-    console.error('Contact send error:', err);
-  }
+  // Build mailto link
+  const subject = encodeURIComponent(`New inquiry from ${name}${business ? ' (' + business + ')' : ''}`);
+  const body = encodeURIComponent(`Name: ${name}\nBusiness: ${business || 'N/A'}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\n\n${message}`);
+  window.location.href = `mailto:Pranoymaz@gmail.com?subject=${subject}&body=${body}`;
+  msgEl.textContent = 'Opening your email client...';
 });
 
 // ─── Footer year ───
