@@ -125,40 +125,20 @@
         <div class="tab-content" id="tab-ridery">
           <div class="project-detail">
             <div class="project-showcase reveal">
-              <div class="browser-mockup">
-                <div class="browser-bar">
-                  <div class="browser-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <div class="browser-url">ridery.app</div>
+              <div class="phone-mockup">
+                <div class="phone-screen">
+                  <img src="images/ridery-login.png" alt="Ridery login screen" class="phone-screenshot active" data-slide="0" />
+                  <img src="images/ridery-home.png" alt="Ridery home screen" class="phone-screenshot" data-slide="1" />
+                  <img src="images/ridery-ride.png" alt="Ridery ride screen" class="phone-screenshot" data-slide="2" />
+                  <img src="images/ridery-map.png" alt="Ridery map screen" class="phone-screenshot" data-slide="3" />
+                  <img src="images/ridery-driver.png" alt="Ridery driver screen" class="phone-screenshot" data-slide="4" />
                 </div>
-                <div class="browser-body">
-                  <div class="mockup-screen ridery-mockup">
-                    <div class="mockup-nav dark">
-                      <span class="mockup-logo">🚗 Ridery</span>
-                      <div class="mockup-nav-links">
-                        <span>Request Ride</span>
-                        <span>My Rides</span>
-                        <span>Profile</span>
-                      </div>
-                    </div>
-                    <div class="mockup-hero dark-hero">
-                      <h2>Where to?</h2>
-                      <div class="mockup-search-bar">
-                        <span>Enter destination...</span>
-                      </div>
-                      <div class="mockup-ride-cards">
-                        <div class="mockup-ride">
-                          <span>🚗 Standard — $12</span>
-                          <span>3 min away</span>
-                        </div>
-                        <div class="mockup-ride">
-                          <span>🚙 Premium — $18</span>
-                          <span>5 min away</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="phone-dots">
+                  <span class="phone-dot active" data-slide="0"></span>
+                  <span class="phone-dot" data-slide="1"></span>
+                  <span class="phone-dot" data-slide="2"></span>
+                  <span class="phone-dot" data-slide="3"></span>
+                  <span class="phone-dot" data-slide="4"></span>
                 </div>
               </div>
             </div>
@@ -330,6 +310,36 @@
           tabContents.forEach(c => c.classList.remove('active'));
           btn.classList.add('active');
           document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+        });
+      });
+
+      // Phone mockup slideshow
+      const screenshots = document.querySelectorAll('.phone-screenshot');
+      const dots = document.querySelectorAll('.phone-dot');
+      let currentSlide = 0;
+      let slideInterval;
+
+      function showSlide(index) {
+        screenshots.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        screenshots[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentSlide + 1) % screenshots.length);
+      }
+
+      // Auto-advance every 3 seconds
+      slideInterval = setInterval(nextSlide, 3000);
+
+      // Click dots to navigate
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          clearInterval(slideInterval);
+          showSlide(parseInt(dot.dataset.slide));
+          slideInterval = setInterval(nextSlide, 3000);
         });
       });
     </script>
