@@ -20,5 +20,3 @@ jobs:
           keep_files: false
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-        with:
-          timeout: 600000
