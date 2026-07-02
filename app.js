@@ -209,6 +209,11 @@ const observer = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => observer.observe(el));
 
+// Fallback: make all reveal elements visible after 1s (in case observer fails)
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+}, 1000);
+
 // ─── Modal / Contact ───
 const modal = document.getElementById('contactModal');
 const modalClose = document.getElementById('modalClose');
