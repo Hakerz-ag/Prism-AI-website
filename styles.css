@@ -319,14 +319,14 @@ body {
   max-width: 720px;
   margin: 0 auto;
   position: relative;
-  padding-left: 40px;
+  padding-left: 48px;
   display: grid;
   gap: 24px;
 }
 .timeline::before {
   content: '';
   position: absolute;
-  left: 20px;
+  left: 8px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -343,13 +343,14 @@ body {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: 12px;
-  top: 10px;
+  left: 1px;
+  top: 6px;
   width: 16px;
   height: 16px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 8px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.1);
+  z-index: 1;
 }
 .timeline-num {
   font-size: 15px;
