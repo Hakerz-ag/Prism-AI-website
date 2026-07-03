@@ -217,7 +217,6 @@ setTimeout(() => {
 // ─── Modal / Contact ───
 const modal = document.getElementById('contactModal');
 const modalClose = document.getElementById('modalClose');
-const form = document.getElementById('contactForm');
 
 function openModal() {
   modal.setAttribute('aria-hidden', 'false');
@@ -238,70 +237,6 @@ modal.querySelector('.modal-backdrop').addEventListener('click', closeModal);
 // Close on Escape
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
-});
-
-// Form submit — sends via Formsubmit (free, no signup needed)
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const emailEl = document.getElementById('email');
-  const msgEl = document.getElementById('formMsg');
-  const sendBtn = form.querySelector('.send-btn');
-
-  const email = (emailEl.value || '').trim();
-  const message = (document.getElementById('message').value || '').trim();
-  const name = (form.name.value || '').trim();
-  const business = (form.business.value || '').trim();
-  const phone = (document.getElementById('phone').value || '').trim();
-
-  const emailRe = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-
-  if (!emailRe.test(email)) {
-    msgEl.textContent = 'Please enter a valid email address.';
-    msgEl.style.color = '#ff6b6b';
-    emailEl.focus();
-    return;
-  }
-  if (!message || message.length < 3) {
-    msgEl.textContent = 'Please enter a short message describing your project.';
-    msgEl.style.color = '#ff6b6b';
-    document.getElementById('message').focus();
-    return;
-  }
-
-  // Disable button while sending
-  sendBtn.disabled = true;
-  sendBtn.querySelector('.send-text').textContent = 'Sending...';
-  msgEl.textContent = '';
-  msgEl.style.color = '';
-
-  try {
-    const res = await fetch('https://formsubmit.co/ajax/Pranoymaz@gmail.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        name,
-        email,
-        _subject: `New inquiry from ${name}${business ? ' (' + business + ')' : ''}`,
-        business: business || 'N/A',
-        phone: phone || 'N/A',
-        message
-      })
-    });
-    const data = await res.json();
-    if (data.success) {
-      msgEl.style.color = '#4ecdc4';
-      msgEl.textContent = '✓ Message sent! I\'ll get back to you within 48 hours.';
-      form.reset();
-    } else {
-      throw new Error(data.message || 'Send failed');
-    }
-  } catch (err) {
-    msgEl.style.color = '#ff6b6b';
-    msgEl.textContent = 'Something went wrong. Please email me directly at Pranoymaz@gmail.com';
-  } finally {
-    sendBtn.disabled = false;
-    sendBtn.querySelector('.send-text').textContent = 'Send Message';
-  }
 });
 
 // ─── Footer year ───
