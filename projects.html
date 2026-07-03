@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=5" />
+    <link rel="stylesheet" href="styles.css?v=6" />
   </head>
   <body>
     <div class="bg-orbs" aria-hidden="true">
@@ -46,7 +46,7 @@
         <div class="projects-tabs reveal">
           <button class="tab-btn active" data-tab="ginas">Gina's Tennis World</button>
           <button class="tab-btn" data-tab="ridery">Ridery</button>
-          <button class="tab-btn" data-tab="insurflow">InsurFlow.ai</button>
+          <button class="tab-btn" data-tab="insurflow">InsurFlow</button>
         </div>
 
         <!-- ═══ GINA'S TENNIS WORLD ═══ -->
@@ -234,7 +234,7 @@
           <a href="projects.html">Projects</a>
           <a href="about.html">About</a>
         </div>
-        <p class="footer-copy">© <span id="year"></span> Prism — Built by Pranoy Mazumder. <a href="mailto:Pranoymaz@gmail.com" style="color:var(--accent);">Pranoymaz@gmail.com</a></p>
+        <p class="footer-copy">© <span id="year"></span> Prism — Built by Pranoy Mazumder. <span style="color:var(--accent);">Pranoymaz@gmail.com</span></p>
       </div>
     </footer>
 
@@ -247,34 +247,16 @@
           <h3>Let's Talk</h3>
           <p class="modal-subtitle">Shoot me an email and I'll get back to you within 48 hours.</p>
         </div>
-        <div style="text-align:center; padding: 24px 0;">
-          <a href="mailto:Pranoymaz@gmail.com" class="btn btn-primary btn-lg" style="font-size:18px; text-decoration:none;">
-            ✉ Pranoymaz@gmail.com
-          </a>
-          <p class="muted" style="margin-top:20px;">Or fill out the form below if you prefer.</p>
+        <div style="text-align:center; padding: 32px 0;">
+          <div style="font-size:48px; margin-bottom:16px;">✉️</div>
+          <p style="font-size:18px; font-weight:600; color:var(--text); margin-bottom:8px;">Pranoymaz@gmail.com</p>
+          <p class="muted">No spam, ever. I'll reply within 48 hours.</p>
         </div>
-        <form id="contactForm">
-          <div class="form-row">
-            <label>Name<input name="name" required placeholder="Your name" /></label>
-            <label>Business Name<input name="business" placeholder="Your business" /></label>
-          </div>
-          <label>Email<input id="email" type="email" name="email" required placeholder="you@business.com" /></label>
-          <label>Phone<input id="phone" type="tel" name="phone" placeholder="+15551234567" /></label>
-          <label>How can I help you?<textarea id="message" name="message" rows="4" placeholder="Tell me about your project..." required></textarea></label>
-          <div id="formMsg" class="muted" aria-live="polite" style="margin-top:8px"></div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary send-btn">
-              <span class="send-text">Send Message</span>
-              <span class="send-icon">✈</span>
-            </button>
-          </div>
-        </form>
-        <p class="muted">No spam, ever. I'll reply within 48 hours.</p>
       </div>
     </div>
 
     <script src="https://unpkg.com/three@0.154.0/build/three.min.js"></script>
-    <script src="app.js?v=5"></script>
+    <script src="app.js?v=6"></script>
     <script>
       // Set current year
       document.getElementById('year').textContent = new Date().getFullYear();
